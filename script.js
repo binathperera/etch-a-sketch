@@ -1,6 +1,7 @@
 let size=24;
 let color='black';
 let mode='Color Select';
+let grid=false;
 document.getElementById('gridsizelabel').innerText = size;
 document.getElementById('mode').value= mode;
 function getRandomColor() {
@@ -34,6 +35,7 @@ function loadGrid(size){
     grid.innerHTML='';
     for( let i=0;i<(size*size);i++){
         let div=document.createElement('div');
+        div.style.boxSizing='border-box';
         div.classList.add('grid-element');
         div.style.minWidth=(grid.offsetHeight/size)+'px';
         div.addEventListener('mouseover',mouseover);
@@ -48,7 +50,21 @@ function clearGrid(e){
 function selectColor(e){
     color= e.target.value;
 }
-
+function toggleGrid(e){
+    if(grid){
+        grid=false;
+        let divs=document.querySelectorAll("#grid div");
+        divs.forEach(element => {
+            element.style.border="0px";
+        });
+    }else{
+        grid=true;
+        let divs=document.querySelectorAll("#grid div");
+        divs.forEach(element => {
+            element.style.border="1px solid black";
+        });
+    }
+}
 function selectMode(e){
     mode= e.target.value;
     erase=false;
@@ -69,6 +85,9 @@ slider.addEventListener('change',setSliderValue);
 
 let clear=document.getElementById("clear");
 clear.addEventListener('click',clearGrid);
+
+let toggleGridButton=document.getElementById("grid-toggle");
+toggleGridButton.addEventListener('click',toggleGrid);
 
 let colorSelector=document.getElementById("color-selector");
 colorSelector.addEventListener('change',selectColor);
