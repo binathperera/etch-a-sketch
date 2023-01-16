@@ -53,13 +53,13 @@ function selectMode(e){
     mode= e.target.value;
     erase=false;
     if(mode=='Color Select'){
-        document.getElementById("color-selector").attributes.add("type='color'");
+        document.getElementById("color-selector").setAttribute("type",'color');
     }else if(mode=='Rainbow'){
-        document.getElementById("color-selector").attributes.add("type='hidden'");
+        document.getElementById("color-selector").setAttribute("type",'hidden');
     }else if(mode=='Darken'){
-        document.getElementById("color-selector").attributes.add("type='hidden'");
+        document.getElementById("color-selector").setAttribute("type",'hidden');
     }else if(mode=='Eraser'){
-        document.getElementById("color-selector").attributes.add("type='hidden'");
+        document.getElementById("color-selector").setAttribute("type",'hidden');
     }
 }
 
