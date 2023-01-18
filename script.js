@@ -12,6 +12,10 @@ function getRandomColor() {
     }
     return color;
   }
+function shadeRGBColor(color, percent) {
+    var f=color.split(","),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=parseInt(f[0].slice(4)),G=parseInt(f[1]),B=parseInt(f[2]);
+    return "rgb("+(Math.round((t-R)*p)+R)+","+(Math.round((t-G)*p)+G)+","+(Math.round((t-B)*p)+B)+")";
+}
 function mouseover(e){
     if(e.buttons==1){
         if(mode=='Eraser'){
@@ -20,11 +24,14 @@ function mouseover(e){
             e.target.style.backgroundColor = color;
         }else if(mode=='Rainbow'){
             e.target.style.backgroundColor = getRandomColor();
-        }else if(mode='Darken'){
-    
+        }else if(mode=='Darken'){
+            e.target.style.backgroundColor = shadeRGBColor(e.target.style.backgroundColor,-0.1); 
+        }else if(mode=='Lighten'){
+            e.target.style.backgroundColor = shadeRGBColor(e.target.style.backgroundColor,0.1); 
         }
     }
 }
+
 function setSliderValue(e){
     size = e.target.value;
     document.getElementById('gridsizelabel').innerText= size;
@@ -68,13 +75,9 @@ function toggleGrid(e){
 function selectMode(e){
     mode= e.target.value;
     erase=false;
-    if(mode=='Color Select'){
+    if(mode=='Color Select' ){
         document.getElementById("color-selector").setAttribute("type",'color');
-    }else if(mode=='Rainbow'){
-        document.getElementById("color-selector").setAttribute("type",'hidden');
-    }else if(mode=='Darken'){
-        document.getElementById("color-selector").setAttribute("type",'hidden');
-    }else if(mode=='Eraser'){
+    }else if(mode=='Rainbow' || mode=='Darken' || mode=='Lighten' || mode=='Eraser'){
         document.getElementById("color-selector").setAttribute("type",'hidden');
     }
 }
