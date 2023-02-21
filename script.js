@@ -2,7 +2,7 @@ let size=24;
 let color='black';
 let mode='Color Select';
 let grid=false;
-document.getElementById('gridsizelabel').innerText = size;
+document.getElementById('gridsizelabel').innerText = size+'x'+size;
 document.getElementById('mode').value= mode;
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -34,7 +34,7 @@ function mouseover(e){
 
 function setSliderValue(e){
     size = e.target.value;
-    document.getElementById('gridsizelabel').innerText= size;
+    document.getElementById('gridsizelabel').innerText= size+'x'+size;
     loadGrid(size);
 }
 function loadGrid(size){
@@ -69,6 +69,7 @@ function toggleGrid(e){
         let divs=document.querySelectorAll("#grid div");
         divs.forEach(element => {
             element.style.border="1px solid black";
+            element.style.bordercollapse= "collapse";
         });
     }
 }

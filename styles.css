@@ -2,21 +2,34 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: beige;
+    background-color: rgb(147, 190, 147);
+}
+main{
+    display: flex;
+    width: fit-content;
+    margin: 0 auto auto auto;
 }
 h1{
     text-align: center;
     font-size: 50px;
 }
+
 #palette{
+    flex: 0;
+    padding: 10px;
     gap: 10px;
-    width: 400px;
     margin:auto;
-    display: flex;
+    width: fit-content;
+    display: flex ;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-color: rgb(11, 11, 48);
+    border-radius: 3px;
+    color: antiquewhite;
 }
+
 #grid{
     background-color: white;
     width: 400px;
@@ -26,13 +39,19 @@ h1{
     flex-wrap: wrap;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 255, .2);;
 } 
-#slidecontainer{
-    width: 200px;
-    margin:auto;
+
+#toggle{
+    display: inline-block;
+    width: 150px;
+}
+#grid-bottom{
+    width: 400px;
+    margin: auto;
 }
 .grid-element{
     flex:1;
 }
+
 .palette-item{
     flex:1;
 }
@@ -50,4 +69,18 @@ h1{
 
 button{
     padding: 5px;
+}
+
+.copyright{
+    color: rgb(229, 229, 229);
+    background-color: #343434;
+    padding: 5px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+a{
+    color: aquamarine;
 }
